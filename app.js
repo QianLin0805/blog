@@ -15,9 +15,8 @@ const path = require('path')
 
 const config = require('./config')
 const routes = require('./routes')
-const api = require('./routes/api')
 
-const port = process.env.PORT || config.port
+const port = process.env.PORT || config.SERVICE.PORT
 
 // error handler
 onerror(app)
@@ -28,12 +27,9 @@ app.use(bodyparser())
   .use(logger())
   .use(require('koa-static')(__dirname + '/public'))
   .use(views(path.join(__dirname, '/views'), {
-    options: {settings: {views: path.join(__dirname, 'views')}},
-    map: {'njk': 'nunjucks'},
-    extension: 'njk'
+    options: { settings: { views: path.join(__dirname, 'views') } },
   }))
   .use(router.routes())
-  .use(router.api())
   .use(router.allowedMethods())
 
 // logger
@@ -45,13 +41,12 @@ app.use(async (ctx, next) => {
 })
 
 routes(router)
-api(router)
 
-app.on('error', function(err, ctx) {
+app.on('error', function (err, ctx) {
   console.log(err)
   logger.error('server error', err, ctx)
 })
 
-module.exports = app.listen(config.port, () => {
-  console.log(`Listening on http://localhost:${config.port}`)
+module.exports = app.listen(port, () => {
+  console.log(`Listening on http://localhost:${port}`)
 })
