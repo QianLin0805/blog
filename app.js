@@ -15,6 +15,7 @@ const path = require('path')
 
 const config = require('./config')
 const routes = require('./routes')
+const api = require('./routes/api.js')
 
 const port = process.env.PORT || config.SERVICE.PORT
 
@@ -34,13 +35,14 @@ app.use(bodyparser())
 
 // logger
 app.use(async (ctx, next) => {
-  const start = new Date()
-  await next()
-  const ms = new Date() - start
-  console.log(`${ctx.method} ${ctx.url} - $ms`)
+  // const start = new Date()
+  // await next()
+  // const ms = new Date() - start
+  // console.log(`${ctx.method} ${ctx.url} - $ms`)
 })
 
 routes(router)
+api(router)
 
 app.on('error', function (err, ctx) {
   console.log(err)
