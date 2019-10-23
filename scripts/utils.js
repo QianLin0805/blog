@@ -9,26 +9,29 @@ const pools = mysql.createPool({
   database: db.DATABASE
 });
 
-const utils = {
-  query: function (sql) {
-    return new Promise((resolve, reject) => {
-      pools.getConnection((err, connect) => {
+// 查询数据库
+function query(sql) {
+  return new Promise((resolve, reject) => {
+    // 连接数据库
+    pools.getConnection((err, connect) => {
+      if (err) {
+        return reject(err);
+      }
+      // 执行查询语句
+      connect.query(sql, (err, res) => {
+        connect.release();
         if (err) {
-          return reject(err);
+          return reject(err)
         }
-        connect.query(sql, (err, res) => {
-          connect.release();
-          if (err) {
-            return reject(err)
-          }
-          return resolve(res);
-        });
+        return resolve(res);
       });
     });
-  },
+  });
 }
 
-module.exports = utils;
+module.exports = {
+  query,
+};
 
 // 查询sql
 // let query = function (sql, res, fn) {
