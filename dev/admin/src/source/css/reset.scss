@@ -1,0 +1,136 @@
+@mixin reset {
+  /* 基础样式重置部分 */  
+  body, h1, h2, h3, h4, h5, h6, p, menu, dl, dd, ol, ul, th, td, blockquote, pre, figure {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font: 14px "Microsoft YaHei", Arial;
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background: #f0f3f4;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+  }
+  
+  ul, ol, li {
+    list-style: none;
+  }
+  
+  p {
+    word-wrap: break-word;
+  }
+  
+  table {
+    font-size: 12px;
+    border: 0;
+    margin: 0;
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #000;
+  }
+  
+  img {
+    border: none;
+    background: none;
+    vertical-align: top;
+  }
+  
+  input, button, option, textarea, select {
+    font: 14px "Microsoft YaHei", Arial;
+    padding: 0;
+    background: none;
+    border-radius: 0;
+    vertical-align: top;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -o-appearance: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+  
+  input, button {
+    border: none;
+  }
+  
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+  }
+  
+  input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+    -webkit-appearance: none !important;
+    margin: 0;
+  }
+  
+  textarea {
+    resize: none;
+  }
+  
+  textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset;
+  }
+  
+  blockquote, q {
+    quotes: none;
+  }
+  
+  strong, b {
+    font-weight: normal;
+  }
+  
+  address, i, em {
+    font-style: normal;
+  }
+  /* 基础样式重置部分 */
+  
+  /* 滚动条样式 */
+  ::-webkit-scrollbar {
+    width: 8px !important;
+    height: 8px !important;
+    background: #f2f4f5 !important;
+    cursor: pointer !important;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #b6b9c2 !important;
+    cursor: pointer !important;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f2f4f5!important;
+    cursor: pointer !important;
+  }
+
+  ::-webkit-scrollbar-corner {
+    background: #f2f4f5!important;
+  }
+  /* 滚动条样式 */
+  
+  /* 通用类 */
+  .fl {
+    float: left;
+  }
+
+  .fr {
+    float: right;
+  }
+
+  .left {
+    left: 0;
+  }
+
+  .right {
+    right: 0;
+  }
+  /* 通用类 */
+}

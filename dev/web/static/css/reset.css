@@ -1,0 +1,29 @@
+@charset "utf-8";
+
+html {font-size: 81.25%;}
+body, h1, h2, h3, h4, h5, h6, p, menu, dl, dd, ol, ul, th, td, blockquote, pre, figure {margin:0; padding:0;}
+body {font: 1rem "Microsoft YaHei", Arial; line-height: 1; min-height: 100vh; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+h1, h2, h3, h4, h5, h6 {font-weight: normal;}
+ul, ol, li {list-style: none;}
+p {word-wrap: break-word;}
+table {border-collapse:collapse; border-spacing:0;}
+a {text-decoration: none; color: #000;}
+img {border: none; background: none; vertical-align: top;}
+
+input, button, option, textarea, select {font: 1rem "Microsoft YaHei", Arial; padding: 0; background: none; border-radius: 0; vertical-align: top; outline: none; -webkit-appearance: none; -moz-appearance: none; -o-appearance: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+input, button { border: none;}
+input:-webkit-autofill {-webkit-box-shadow: 0 0 0 1000px white inset;}
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {-webkit-appearance: none !important;margin: 0;}
+textarea {resize: none;}
+textarea:-webkit-autofill {-webkit-box-shadow: 0 0 0 1000px white inset;}
+
+blockquote, q {quotes: none;}
+strong, b {font-weight: normal;}
+address, i, em {font-style: normal;}
+
+@media ( min-width : 375px) {
+    html {font-size: 87.5%;}
+}
+/*@media ( min-width : 640px) {
+    body {width: 640px;margin: 0 auto;}
+}*/

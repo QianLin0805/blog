@@ -1,0 +1,191 @@
+@mixin edit {
+  .edit {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    min-width: 650px;
+    height: 100%;
+    background: #f8f8f8;
+    transition: all 0.3s ease-in;
+    &.slide-enter, &.slide-leave-active {
+      transform: translateX(100%);
+    }
+
+    .title {
+      position: absolute;
+      left: 0;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      height: 40px;
+      line-height: 40px;
+      font-size: 16px;
+      color: #666;
+      padding-top: 10px;
+      margin: 0 20px;
+      background: #f8f8f8;
+      border-bottom: 1px solid #ccc;
+      .icon {
+        display: inline-block;
+        width: 24px;
+        font-size: 14px;
+        color: #999;
+      }
+      // .icon-quill {
+      //   font-size: 1.1rem;
+      //   color: #888;
+      //   font-weight: bold;
+      // }
+      .back {
+        float: right;
+        font-size: 14px;
+        color: #47a4e9;
+        margin-right: 10px;
+        cursor: pointer;
+        span {
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .form-ctn {
+      height: calc(100% - 142px);
+      padding: 61px 20px 81px;
+      overflow-x: hidden;
+      overflow-y: visible;
+      .form {
+        overflow: hidden;
+        font-size: 14px;
+        color: #666;
+        .item {
+          position: relative;
+          min-height: 30px;
+          line-height: 30px;
+          border-top: 1px solid #ddd;
+          padding: 12px 0 12px 120px;
+          &:first-child {
+            border: none;
+          }
+          .left {
+            position: absolute;
+            left: 0;
+            top: 12px;
+            display: inline-block;
+            text-align: right;
+            width: 100px;
+          }
+          .right {
+            overflow: hidden;
+            select {
+              min-width: 150px;
+              height: 30px;
+              line-height: 30px;
+              border-color: #ddd;
+            }
+            input[type="text"] {
+              width: 188px;
+              height: 30px;
+              line-height: 30px;
+              border: 1px solid #ddd;
+              padding: 0 5px;
+              border-radius: 3px;
+              &.small {
+                width: 48px;
+              }
+              &.middle {
+                width: calc(50% - 2px);
+                min-width: 288px;
+              }
+              &.large {
+                width: calc(80% - 2px);
+                min-width: 488px;
+              }
+            }
+            input[type="radio"] {
+              vertical-align: middle;
+              margin-top: -1px;
+              cursor: pointer;
+            }
+            label {
+              margin: 0 20px 0 5px;
+              cursor: pointer;
+            }
+            textarea {
+              width: calc(80% - 2px);
+              max-width: calc(80% - 2px);
+              min-height: calc(120px - 12px);
+              padding: 5px;
+              border-color: #ddd;
+              &.large {
+                width: calc(100% - 12px);
+                max-width: calc(100% - 12px);
+              }
+            }
+          }
+          .tags {
+            position: relative;
+            p {
+              margin-top: 10px;
+              &:first-child {
+                margin-top: 0;
+              }
+              .delete {
+                font-size: 13px;
+                color: red;
+                margin-left: 5px;
+                vertical-align: middle;
+                cursor: pointer;
+              }
+            }
+            .multi {
+              position: absolute;
+              right: 1rem;
+              top: 0;
+              font-size: 13px;
+              color: #47a4e9;
+              cursor: pointer;
+            }
+            .errors {
+              margin-left: 0;
+            }
+          }
+          .errors {
+            color: red;
+            font-size: 12px;
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+
+    .save {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 1;
+      padding: 10px 0 20px;
+      margin: 0 20px;
+      background: #f8f8f8;
+      border-top: 1px solid #ccc;
+      #save {
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 15px;
+        color: #fafafa;
+        background: #47a4e9;
+        border: 1px solid #3498db;
+        border-radius: 3px;
+        margin-left: 120px;
+        cursor: pointer;
+        transition: all ease 0.2s;
+        &:hover {
+          background: #3498db;
+        }
+      }
+    }
+  }
+}
