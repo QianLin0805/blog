@@ -15,8 +15,7 @@ function query(sql) {
     // 连接数据库
     pools.getConnection((err, connect) => {
       if (err) {
-        console.log('服务器未连接');
-        return reject(err);
+        return resolve(err)
       }
       // 执行查询语句
       connect.query(sql, (err, res) => {
@@ -50,25 +49,38 @@ function validate(ctx) {
   });
 }
 
-// 统一处理接口请求的数据返回
-function setApiJson(ctx, res, callback, msg) {
-  // 处理服务器内部错误
+// 接口请求成功，返回json数据
+function setApiJson(ctx, res, json) {
+  json = json ? json : {};
+  ctx.status = 200;
+  ctx.body = {
+    code: json.code ? json.code : 200,
+    msg: json.msg ? json.msg : '成功',
+    data: res,
+  };
+}
+// 统一处理接口请求结果
+function setApiResult(ctx, res, json) {
+  // 接口请求失败，返回服务器错误信息
   if (res.errno) {
-    res.msg = '内部错误';
+    if (res.errno === 'ECONNREFUSED') {
+      ctx.status = 408;
+      res.msg = '服务器未连接';
+      ctx.body = res;
+      return;
+    }
     ctx.status = 500;
+    res.msg = '内部错误';
     ctx.body = res;
     return;
   }
-  ctx.status = 200;
-  ctx.body = {
-    code: 200,
-    msg: '成功',
-    data: res,
-  };
+  // 接口请求成功，返回结果
+  setApiJson(ctx, res, json);
 }
 
 module.exports = {
   query,
   validate,
   setApiJson,
+  setApiResult,
 };
