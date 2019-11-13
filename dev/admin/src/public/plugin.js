@@ -100,7 +100,7 @@ http.interceptors.request.use(function (req) {
 });
 // 统一处理返回
 http.interceptors.response.use(function (res) {
-  return res.data;
+  return res;
 }, function (err) {
   // console.log(err);
   if (err.message.indexOf('timeout') >= 0) {

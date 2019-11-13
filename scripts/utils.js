@@ -78,9 +78,22 @@ function setApiResult(ctx, res, json) {
   setApiJson(ctx, res, json);
 }
 
+// 提取接口入参对象中的key和value
+function formatParams(params) {
+  let keys = [], values = [];
+  for (key in params) {
+    if (params[key]) {
+      keys.push(key);
+      values.push(`"${params[key]}"`);
+    }
+  }
+  return { keys: keys, vals: values };
+}
+
 module.exports = {
   query,
   validate,
   setApiJson,
   setApiResult,
+  formatParams,
 };

@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 import { getCookie, setCookie } from "@/public/utils.js";
 
 export default {
@@ -78,12 +79,9 @@ export default {
         this.checkState = true;
         if (this.errors.has("username")) this.errors.remove("username");
 
-        this.$ajax({
+        axios({
           method: "get",
-          url: "/user/username/" + val,
-          headers: {
-            catch: true
-          }
+          url: "/api/user/username/" + val,
         }).then(res => {
           if (res.data.length > 0) {
             this.nameEnable = true;
@@ -122,13 +120,13 @@ export default {
         };
         this.errors.items.push(rule);
       }
-      if (this.errors.items.length > 0) return;
+      // if (this.errors.items.length > 0) return;
       if (this.flag) return;
       this.flag = true;
 
-      this.$ajax({
+      axios({
         method: "post",
-        url: "/login",
+        url: "/api/login",
         data: {
           username: this.username,
           password: this.password
