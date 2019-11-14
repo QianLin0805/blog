@@ -15,14 +15,43 @@ function query(sql) {
     // 连接数据库
     pools.getConnection((err, connect) => {
       if (err) {
+        // err = {
+        //   address: "127.0.0.1",
+        //   code: "ECONNREFUSED",
+        //   errno: "ECONNREFUSED",
+        //   fatal: true,
+        //   port: 3306,
+        //   syscall: "connect",
+        //   message: "connect ECONNREFUSED 127.0.0.1:3306",
+        // }
         return resolve(err)
       }
       // 执行查询语句
       connect.query(sql, (err, res) => {
         connect.release();
         if (err) {
+          // err = {
+          //   code: "ER_BAD_FIELD_ERROR",
+          //   errno: 1054,
+          //   index: 0,
+          //   sql: "select * from users where usernam='test'",
+          //   sqlMessage: "Unknown column 'usernam' in 'where clause'",
+          //   sqlState: "42S22",
+          //   message: "ER_BAD_FIELD_ERROR: Unknown column 'usernam' in 'where clause'",
+          // }
           return resolve(err)
         }
+        // select => array
+        // insert => {
+        //   affectedRows: 1,
+        //   changedRows: 0,
+        //   fieldCount: 0,
+        //   insertId: 4,
+        //   message: "",
+        //   protocol41: true,
+        //   serverStatus: 2,
+        //   warningCount: 0,
+        // }
         return resolve(res);
       });
     });
